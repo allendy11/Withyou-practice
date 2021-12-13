@@ -1,0 +1,45 @@
+/* 빅데스크탑 */
+@media only screen and (max-width: 1799px) {
+  /* 데스크탑 */
+}
+@media only screen and (max-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+@media only screen and (max-width: 599px) {
+  /* 모바일 세로 */
+  .landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #start {
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 4rem;
+    width: 15rem;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 2rem;
+    background-color: black;
+    color: white;
+  }
+
+  #start:hover {
+    background-color: white;
+    color: black;
+  }
+}
+
+@media only screen and (max-device-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-device-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+
+@media only screen and (max-device-width: 599px) {
+  /* 모바일 세로 */
+}

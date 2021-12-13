@@ -1,0 +1,67 @@
+/* 빅데스크탑 */
+@media only screen and (max-width: 1799px) {
+  /* 데스크탑 */
+}
+@media only screen and (max-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+@media only screen and (max-width: 599px) {
+  /* 모바일 세로 */
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Gulimn";
+    border-top: 1px solid black;
+  }
+  .footer-container > div:first-child {
+    display: none;
+  }
+  .github-logo > img {
+    width: 3rem;
+  }
+  .footer-box {
+    width: 100%;
+    margin: 0 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-github > a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .footer-github span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem 0.3rem;
+  }
+  .footer-github:hover {
+    text-shadow: 1px 1px 2px rgb(61, 61, 61);
+  }
+  .footer-developer {
+    display: flex;
+  }
+  .footer-developer span {
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+  }
+  .footer-developer span:hover {
+    text-shadow: 1px 1px 2px black;
+  }
+}
+
+@media only screen and (max-device-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-device-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+
+@media only screen and (max-device-width: 599px) {
+  /* 모바일 세로 */
+}

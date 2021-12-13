@@ -1,0 +1,52 @@
+/* 빅데스크탑 */
+@media only screen and (max-width: 1799px) {
+  /* 데스크탑 */
+}
+@media only screen and (max-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+@media only screen and (max-width: 599px) {
+  /* 모바일 세로 */
+  .nav-container {
+    flex: 0 1 5rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Huglife";
+  }
+  .nav-box {
+    margin: 0 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .nav-box > div {
+    cursor: pointer;
+  }
+  .nav-box > div:hover {
+    text-shadow: 2px 2px 5px gray;
+  }
+  .nav-title span {
+    font-size: 3.7rem;
+  }
+  .nav-menu {
+    margin-top: 0.6rem;
+    display: flex;
+    font-size: 3rem;
+  }
+  .nav-menu > div {
+    margin: 0 0.5rem;
+  }
+}
+
+@media only screen and (max-device-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-device-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+
+@media only screen and (max-device-width: 599px) {
+  /* 모바일 세로 */
+}
