@@ -2,7 +2,7 @@ import {
   ADD_CANVAS,
   COPY_CANVAS,
   REMOVE_CANVAS,
-  SET_CANVAS,
+  // SET_CANVAS,
 } from "../actions/";
 import { initialState } from "./initialState";
 const canvasReducer = (state = initialState, action) => {

@@ -24,10 +24,10 @@
   .nav-box > div {
     cursor: pointer;
   }
-  .nav-box > div:hover {
+  .nav-box div:hover {
     text-shadow: 2px 2px 5px gray;
   }
-  .nav-title span {
+  .nav-title {
     font-size: 3.7rem;
   }
   .nav-menu {

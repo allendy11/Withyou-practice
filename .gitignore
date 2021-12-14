@@ -125,7 +125,7 @@ dist
 ### Node Patch ###
 # Serverless Webpack directories
 .webpack/
-webpack.config.js
+
 # Optional stylelint cache
 .stylelintcache
 
@@ -149,5 +149,3 @@ sketch
 .DS_Store
 .env
 
-server/
-build/

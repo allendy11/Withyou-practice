@@ -1,32 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/Nav.css";
-const Nav = ({ isLogin, setIsLogin }) => {
+import axios from "axios";
+axios.default.withCredentials = true;
+const server_url = "http://localhost:8080";
+const Nav = ({
+  isLogin,
+  setIsLogin,
+  loginBtn,
+  setLoginBtn,
+  joinBtn,
+  setJoinBtn,
+}) => {
+  const handleClick = (e) => {
+    if (e.target.id === "Login") {
+      setLoginBtn(true);
+    }
+    if (e.target.id === "Join") {
+      setLoginBtn(true);
+      setJoinBtn(true);
+    }
+    if (e.target.id === "Mypage") {
+      window.location.assign("/mypage");
+    }
+    if (e.target.id === "Logout") {
+      try {
+        axios({
+          url: `${server_url}/user/signout`,
+          method: "GET",
+        });
+
+        setLoginBtn(false);
+        window.location.assign("/");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div className="nav-container">
-      <div className="nav-box">
-        <div className="nav-title">
-          <Link to="/">
-            <span>Withyou</span>
-          </Link>
-        </div>
+      <div className="nav-box nav-title">
+        <Link to="/">
+          <div id="Withyou">Withyou</div>
+        </Link>
       </div>
       {!isLogin ? (
         <div className="nav-box nav-menu">
-          <div className="login">
-            <span>Login</span>
+          <div id="Login" onClick={(e) => handleClick(e)}>
+            Login
           </div>
-          <div className="join">
-            <span>Join</span>
+          <div id="Join" onClick={(e) => handleClick(e)}>
+            Join
           </div>
         </div>
       ) : (
         <div className="nav-box nav-menu">
-          <div className="Mypage">
-            <span>Mypage</span>
+          <div id="Mypage" onClick={(e) => handleClick(e)}>
+            Mypage
           </div>
-          <div className="Logout">
-            <span>Logout</span>
+          <div id="Logout" onClick={(e) => handleClick(e)}>
+            Logout
           </div>
         </div>
       )}

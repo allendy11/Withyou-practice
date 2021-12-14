@@ -47,8 +47,22 @@ const elementReducer = (state = initialState, action) => {
         ...currentElement,
         style: { ...currentElement.style, ...action.payload.style },
       };
-
-      return {};
+      currentCanvas = {
+        ...currentCanvas,
+        elements: [
+          ...currentCanvas.elements.slice(0, action.payload.elementId),
+          currentElement,
+          ...currentCanvas.elements.slice(action.payload.elementId + 1),
+        ],
+      };
+      return {
+        ...state,
+        canvas: [
+          ...state.canvas.slice(0, action.payload.canvasId),
+          currentCanvas,
+          ...state.canvas.slice(action.payload.canvasId + 1),
+        ],
+      };
     default:
       return state;
   }

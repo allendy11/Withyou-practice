@@ -1,0 +1,160 @@
+/* 빅데스크탑 */
+@media only screen and (max-width: 1799px) {
+  /* 데스크탑 */
+}
+@media only screen and (max-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+@media only screen and (max-width: 599px) {
+  /* 모바일 세로 */
+  .login-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .login-box {
+    flex: 1 1 0;
+    /* border: 1px solid black; */
+  }
+  .login-box:first-child {
+    flex: 0 1 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+    font-family: "Huglife";
+  }
+  .login-mid {
+    flex: 0 1 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Gulimn";
+  }
+  .login-mid > div {
+    /* border: 1px solid black; */
+  }
+  .login-midTop {
+    flex: 0 1 2rem;
+  }
+  .login-midTop > div {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+  }
+  .login-midMid {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem 0;
+    align-items: center;
+  }
+  .login-input {
+    position: relative;
+    width: 80%;
+  }
+  .login-input > input {
+    width: 100%;
+    font-size: 1.3rem;
+    border: none;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.3rem;
+  }
+  .login-input > input::placeholder {
+    color: transparent;
+  }
+  .login-input > input:placeholder-shown + label {
+    font-size: 1.5rem;
+    top: 0;
+    left: 0;
+  }
+  .login-input > input:focus + label,
+  .login-input > label {
+    position: absolute;
+    top: -1rem;
+    left: 0.1rem;
+    font-size: 0.8rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .login-input > input:focus,
+  .login-input > input:not(:placeholder-shown) {
+    outline: none;
+    border-bottom: 1px solid rgb(45, 214, 45);
+  }
+  .login-midBot {
+    flex: 0 1 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .login-err-message {
+    flex: 0 1 2rem;
+    /* border: 1px solid black; */
+    width: 70%;
+    font-size: 0.8rem;
+    color: red;
+    text-align: center;
+  }
+  #login-btn {
+    text-align: center;
+    border: 1px solid black;
+    width: 15rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  .login-btn:hover {
+    background-color: black;
+    color: white;
+  }
+  .login-midBot > div:last-child {
+    text-align: right;
+    width: 100%;
+  }
+  .login-midBot span {
+    margin-right: 0.5rem;
+  }
+  .login-midBot span:last-child {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+  }
+  .login-midBot span:last-child:hover {
+    text-shadow: 1px 1px 2px black;
+  }
+  #close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: rgb(212, 212, 212);
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-device-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-device-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+
+@media only screen and (max-device-width: 599px) {
+  /* 모바일 세로 */
+}

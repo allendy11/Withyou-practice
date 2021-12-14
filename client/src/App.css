@@ -9,7 +9,9 @@ body,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  user-select: none;
 }
+
 @font-face {
   font-family: "Huglife";
   src: url("./fonts/HughIsLifePersonalUseItalic-K7axe.ttf") format("truetype");
