@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [loginBtn, setLoginBtn] = useState(false);
-  const [joinBtn, setJoinBtn] = useState(false);
+  const [signupBtn, setSignupBtn] = useState(false);
   return (
     <Router>
       <Nav
@@ -18,8 +18,8 @@ function App() {
         setIsLogin={setIsLogin}
         loginBtn={loginBtn}
         setLoginBtn={setLoginBtn}
-        joinBtn={joinBtn}
-        setJoinBtn={setJoinBtn}
+        signupBtn={signupBtn}
+        setSignupBtn={setSignupBtn}
       />
       <Routes>
         <Route path="/" element={<Landingpage />} />
@@ -27,7 +27,12 @@ function App() {
         <Route path="/mypage" element={<Mypage />} />
       </Routes>
       {loginBtn ? (
-        <Login loginBtn={loginBtn} setLoginBtn={setLoginBtn} />
+        <Login
+          loginBtn={loginBtn}
+          setLoginBtn={setLoginBtn}
+          signupBtn={signupBtn}
+          setSignupBtn={setSignupBtn}
+        />
       ) : null}
     </Router>
   );

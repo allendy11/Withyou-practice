@@ -9,21 +9,21 @@ const Nav = ({
   setIsLogin,
   loginBtn,
   setLoginBtn,
-  joinBtn,
-  setJoinBtn,
+  signupBtn,
+  setSignupBtn,
 }) => {
   const handleClick = (e) => {
-    if (e.target.id === "Login") {
+    if (e.target.id === "login") {
       setLoginBtn(true);
     }
-    if (e.target.id === "Join") {
+    if (e.target.id === "signup") {
       setLoginBtn(true);
-      setJoinBtn(true);
+      setSignupBtn(true);
     }
-    if (e.target.id === "Mypage") {
+    if (e.target.id === "mypage") {
       window.location.assign("/mypage");
     }
-    if (e.target.id === "Logout") {
+    if (e.target.id === "logout") {
       try {
         axios({
           url: `${server_url}/user/signout`,
@@ -46,19 +46,19 @@ const Nav = ({
       </div>
       {!isLogin ? (
         <div className="nav-box nav-menu">
-          <div id="Login" onClick={(e) => handleClick(e)}>
+          <div id="login" onClick={(e) => handleClick(e)}>
             Login
           </div>
-          <div id="Join" onClick={(e) => handleClick(e)}>
+          <div id="signup" onClick={(e) => handleClick(e)}>
             Join
           </div>
         </div>
       ) : (
         <div className="nav-box nav-menu">
-          <div id="Mypage" onClick={(e) => handleClick(e)}>
+          <div id="mypage" onClick={(e) => handleClick(e)}>
             Mypage
           </div>
-          <div id="Logout" onClick={(e) => handleClick(e)}>
+          <div id="logout" onClick={(e) => handleClick(e)}>
             Logout
           </div>
         </div>
