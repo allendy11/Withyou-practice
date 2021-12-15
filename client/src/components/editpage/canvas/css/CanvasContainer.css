@@ -41,6 +41,7 @@
 }
 .canvas-page {
   flex: 1 1 0;
+  position: relative;
   /* border: 1px solid red; */
 }
 .canvas-editor {

@@ -1,3 +1,11 @@
+#canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px black;
+}
 /* 빅데스크탑 */
 @media only screen and (max-width: 1799px) {
   /* 데스크탑 */
@@ -10,6 +18,14 @@
 }
 @media only screen and (max-width: 599px) {
   /* 모바일 세로 */
+  #canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
+  }
 }
 
 @media only screen and (max-device-width: 1199px) {

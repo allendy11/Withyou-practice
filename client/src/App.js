@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Editpage from "./pages/Editpage";
 import Landingpage from "./pages/Landingpage";
@@ -11,6 +11,13 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [loginBtn, setLoginBtn] = useState(false);
   const [signupBtn, setSignupBtn] = useState(false);
+  // const [browserWidth, setBrowserWidth] = useState("");
+  // window.onresize = (e) => {
+  //   setBrowserWidth(window.innerWidth);
+  // };
+  // useEffect(() => {
+  //   setBrowserWidth(window.innerWidth);
+  // }, []);
   return (
     <Router>
       <Nav
