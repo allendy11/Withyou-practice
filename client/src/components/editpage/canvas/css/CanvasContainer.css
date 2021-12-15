@@ -1,0 +1,122 @@
+.canvas-container {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+.canvas-container > div {
+  border: 1px solid black;
+}
+.canvas-menu {
+  flex: 0 1 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Gulimn";
+  font-size: 1.2rem;
+}
+.canvas-menu-L {
+  display: flex;
+}
+.canvas-menu-L > div {
+  margin: 0 0.3rem;
+  cursor: pointer;
+}
+.canvas-menu-L > div:hover {
+  text-shadow: 1px 1px 1px black;
+}
+.canvas-menu-R {
+  display: flex;
+}
+.canvas-menu-R > div {
+  margin: 0 0.3rem;
+  cursor: pointer;
+}
+.canvas-menu-R > div:hover {
+  text-shadow: 1px 1px 1px black;
+}
+.canvas-box {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+.canvas-page {
+  flex: 1 1 0;
+  /* border: 1px solid red; */
+}
+.canvas-editor {
+  flex: 0 1 7rem;
+  /* border: 1px solid blue; */
+}
+/* 빅데스크탑 */
+@media only screen and (max-width: 1799px) {
+  /* 데스크탑 */
+}
+@media only screen and (max-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+@media only screen and (max-width: 599px) {
+  /* 모바일 세로 */
+  .canvas-container {
+    flex: 0 1 35rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+  }
+  .canvas-container > div {
+    border: 1px solid black;
+  }
+  .canvas-menu {
+    flex: 0 1 2rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Gulimn";
+    font-size: 1.2rem;
+  }
+  .canvas-menu-L {
+    display: flex;
+  }
+  .canvas-menu-L > div {
+    margin: 0 0.3rem;
+    cursor: pointer;
+  }
+  .canvas-menu-L > div:hover {
+    text-shadow: 1px 1px 1px black;
+  }
+  .canvas-menu-R {
+    display: flex;
+  }
+  .canvas-menu-R > div {
+    margin: 0 0.3rem;
+    cursor: pointer;
+  }
+  .canvas-menu-R > div:hover {
+    text-shadow: 1px 1px 1px black;
+  }
+  .canvas-box {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .canvas-page {
+    flex: 1 1 0;
+    /* border: 1px solid red; */
+  }
+  .canvas-editor {
+    flex: 0 1 5rem;
+    /* border: 1px solid blue; */
+  }
+}
+
+@media only screen and (max-device-width: 1199px) {
+  /* 타블렛 가로 */
+}
+@media only screen and (max-device-width: 899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+
+@media only screen and (max-device-width: 599px) {
+  /* 모바일 세로 */
+}

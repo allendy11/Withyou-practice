@@ -7,9 +7,9 @@ const Login = ({ loginBtn, setLoginBtn, signupBtn, setSignupBtn }) => {
   );
   const handleClick = (e) => {
     if (e.target.id === "login-btn") {
-      setLoginBtn(true);
+      setLoginBtn(false);
     }
-    if (e.target.id === "signup-btn") {
+    if (e.target.id === "toSignup-btn") {
       setSignupBtn(true);
     }
     if (e.target.id === "close-btn") {
@@ -53,7 +53,7 @@ const Login = ({ loginBtn, setLoginBtn, signupBtn, setSignupBtn }) => {
               </div>
               <div>
                 <span>처음 오셨나요?</span>
-                <span id="signup-btn" onClick={(e) => handleClick(e)}>
+                <span id="toSignup-btn" onClick={(e) => handleClick(e)}>
                   가입하기
                 </span>
               </div>

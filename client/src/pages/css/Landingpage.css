@@ -1,3 +1,25 @@
+.landing-container {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#start {
+  border: 1px solid black;
+  border-radius: 15px;
+  height: 4rem;
+  width: 15rem;
+  text-align: center;
+  line-height: 4rem;
+  font-size: 2rem;
+  background-color: black;
+  color: white;
+}
+
+#start:hover {
+  background-color: white;
+  color: black;
+}
 /* 빅데스크탑 */
 @media only screen and (max-width: 1799px) {
   /* 데스크탑 */

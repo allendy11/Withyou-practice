@@ -1,3 +1,31 @@
+.nav-container {
+  flex: 0 1 5rem;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Huglife";
+}
+.nav-box {
+  margin: 0 0.5rem;
+  margin-top: 0.4rem;
+}
+.nav-box > div {
+  cursor: pointer;
+}
+.nav-box div:hover {
+  text-shadow: 2px 2px 5px gray;
+}
+.nav-title {
+  font-size: 3.7rem;
+}
+.nav-menu {
+  margin-top: 0.6rem;
+  display: flex;
+  font-size: 3rem;
+}
+.nav-menu > div {
+  margin: 0 0.5rem;
+}
 /* 빅데스크탑 */
 @media only screen and (max-width: 1799px) {
   /* 데스크탑 */
