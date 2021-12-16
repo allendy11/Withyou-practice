@@ -6,36 +6,10 @@ export const initialState = {
       url: "",
     },
   ],
-  canvas: [
-    {
-      canvasId: 0,
-      canvasStyle: {},
-      elements: [
-        {
-          elementId: 0,
-          style: {
-            top: "",
-            left: "",
-            width: "",
-            height: "",
-            rotate: "",
-            zIndex: "",
-          },
-        },
-      ],
-    },
-    {
-      canvasId: 1,
-    },
-    {
-      canvasId: 2,
-    },
-  ],
-  currentCanvas: {
-    canvasId: 0,
-  },
+  canvas: [],
+  currentCanvas: {},
   currentElement: {
-    elementId: 0,
+    id: 0,
   },
   // initialStyle: {},
   adminTemplates: [],

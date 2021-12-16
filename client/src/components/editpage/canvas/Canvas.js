@@ -1,13 +1,14 @@
 import React from "react";
 import "./css/Canvas.css";
-const Canvas = ({ canvasStyle }) => {
+const Canvas = ({ canvas }) => {
   return (
     <div
-      id="canvas"
+      id={canvas.id}
+      className="canvas"
       style={{
-        backgroundColor: `${canvasStyle.backgroundColor}`,
-        width: `${canvasStyle.width}px`,
-        height: `${canvasStyle.height}px`,
+        backgroundColor: `${canvas.style.backgroundColor}`,
+        width: `${canvas.style.width}px`,
+        height: `${canvas.style.height}px`,
       }}
     ></div>
   );

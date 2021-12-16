@@ -1,3 +1,5 @@
+export const SET_INITIAL_CANVAS = "SET_INITIAL_CANVAS"; // 초기 캔버스 스타일 세팅
+export const SET_STYLE_CANVAS = "SET_STYLE_CANVAS"; // 캔버스 스타일 변경
 export const ADD_CANVAS = "ADD_CANVAS"; // 빈 캔버스 추가
 export const COPY_CANVAS = "COPY_CANVAS"; // 현재 캔버스 복사
 export const REMOVE_CANVAS = "REMOVE_CANVAS"; // 현재 캔버스 삭제
@@ -24,30 +26,46 @@ export const fetchData = (api, action) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
-export const addCanvas = (canvasId) => {
+export const setInitialCanvas = (id, style) => {
+  return {
+    type: SET_INITIAL_CANVAS,
+    payload: {
+      id,
+      style,
+    },
+  };
+};
+export const setStyleCanvas = (id, style) => {
+  return {
+    type: SET_STYLE_CANVAS,
+    payload: {
+      id,
+      style,
+    },
+  };
+};
+export const addCanvas = (id, style) => {
   return {
     type: ADD_CANVAS,
     payload: {
-      id: canvasId,
-      style: {},
-      elements: [],
+      id,
+      style,
     },
   };
 };
-export const copyCanvas = (canvasId, canvas) => {
+export const copyCanvas = (id) => {
   return {
     type: COPY_CANVAS,
     payload: {
-      ...canvas,
-      id: canvasId,
+      id,
     },
   };
 };
-export const removeCanvas = (canvasId) => {
+export const removeCanvas = (id) => {
   return {
     type: REMOVE_CANVAS,
     payload: {
-      id: canvasId,
+      id,
     },
   };
 };
