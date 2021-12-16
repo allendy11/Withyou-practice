@@ -12,6 +12,8 @@ export const ADD_ELEMENT = "ADD_ELEMENT"; // 관리자 권한으로 엘리먼트
 export const PUT_ELEMENT = "PUT_ELEMENT"; // 유저가 원하는 엘리먼트 캔버스에 추가
 export const UPDATE_ELEMENT = "UPDATE_ELEMENT"; // 유저가 엘리먼트 스타일 변경
 
+export const ADMIN_ADD_TEMPLATE = "ADMIN_ADD_TEMPLATE"; // 관리자 권한으로 템플릿 추가
+export const ADMIN_ADD_ELEMENT = "ADMIN_ADD_ELEMENT"; // 관리자 권한으로 엘리먼트 추가
 export const NOTIFY = "NOTIFY";
 
 export const fetchData = (api, action) => (dispatch) => {
@@ -106,6 +108,24 @@ export const updateElement = (canvasId, elementId, style) => {
       canvasId,
       elementId,
       style,
+    },
+  };
+};
+export const adminAddTemplate = (templateId, card) => {
+  return {
+    type: ADMIN_ADD_TEMPLATE,
+    payload: {
+      templateId,
+      card,
+    },
+  };
+};
+export const adminAddElement = (elementId, src) => {
+  return {
+    type: ADMIN_ADD_ELEMENT,
+    payload: {
+      elementId,
+      src,
     },
   };
 };

@@ -1,13 +1,14 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Editpage from "./pages/Editpage";
+import Editpage from "pages/Editpage";
 import Landingpage from "./pages/Landingpage";
-import Mypage from "./pages/Mypage";
-import Nav from "./components/Nav";
-import Login from "./components/auth/Login";
-import Footer from "./components/Footer";
+import Mypage from "pages/Mypage";
+import Nav from "components/Nav";
+import Login from "components/auth/Login";
+import Footer from "components/Footer";
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [loginBtn, setLoginBtn] = useState(false);
   const [signupBtn, setSignupBtn] = useState(false);

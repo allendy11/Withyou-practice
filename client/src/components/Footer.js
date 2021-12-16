@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/Footer.css";
-import github_logo from "../images/github.png";
+import github_logo from "images/icon/oauth_icon/github.png";
 import LinkToGitHub from "./LinkToGithub";
 const Footer = () => {
   const front = [
