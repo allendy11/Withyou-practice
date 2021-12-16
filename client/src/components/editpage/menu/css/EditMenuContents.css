@@ -1,11 +1,5 @@
-#canvas {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
-  box-shadow: 2px 2px 3px black;
-  background-color: white;
+.editMenu-contents {
+  flex: 0 1 18em;
 }
 /* 빅데스크탑 */
 @media only screen and (max-width: 1799px) {
@@ -19,6 +13,9 @@
 }
 @media only screen and (max-width: 599px) {
   /* 모바일 세로 */
+  .editMenu-contents {
+    flex: 1 1 0;
+  }
 }
 
 @media only screen and (max-device-width: 1199px) {

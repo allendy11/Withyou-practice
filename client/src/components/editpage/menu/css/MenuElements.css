@@ -1,6 +1,6 @@
 .elements-container {
-  height: 100%;
-  width: 100%;
+  /* height: 100%; */
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -10,18 +10,18 @@
 }
 .elements-top {
   flex: 0 1 6rem;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 .elements-title {
   font-size: 2rem;
   font-family: "Gulimn";
   font-weight: 600;
   margin: 1rem;
+  width: 12rem;
 }
 .elements-addBtn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  margin: 0.5rem;
   width: 2.5rem;
   height: 1.5rem;
   line-height: 1.5rem;
@@ -71,6 +71,47 @@
 }
 @media only screen and (max-width: 599px) {
   /* 모바일 세로 */
+  .elements-container {
+    align-items: center;
+  }
+  .elements-container > div {
+    /* border: 1px solid black; */
+  }
+  .elements-top {
+    flex: 1 1 0;
+    width: 100%;
+  }
+  .elements-contents {
+    flex: 0 1 16rem;
+    overflow-y: scroll;
+    padding-left: 0.8rem;
+    width: 90%;
+  }
+  .element-image {
+    /* border: 1px solid black; */
+    height: 6rem;
+    width: 6rem;
+    margin: 0.5rem;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+  .element-image:hover {
+    box-shadow: 1px 1px 3px black;
+  }
+
+  .element-image > img {
+    width: 6rem;
+    object-fit: contain;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 @media only screen and (max-device-width: 1199px) {
   /* 타블렛 가로 */

@@ -3,6 +3,7 @@ import elements from "images/icon/menu_icon/elements.png";
 import image from "images/icon/menu_icon/image.png";
 import template from "images/icon/menu_icon/template.png";
 import text from "images/icon/menu_icon/text.png";
+import "./css/EditMenuBar.css";
 const EditMenuBar = ({ selectMenu, setSelectMenu }) => {
   const iconRef = useRef([]);
   const handleClick = (e) => {

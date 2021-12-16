@@ -2,17 +2,19 @@
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .canvas-container > div {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .canvas-menu {
   flex: 0 1 2rem;
   display: flex;
   justify-content: space-between;
   font-family: "Gulimn";
-  font-size: 1.2rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  border: 1px solid black;
 }
 .canvas-menu-L {
   display: flex;
@@ -42,11 +44,27 @@
 .canvas-page {
   flex: 1 1 0;
   position: relative;
-  /* border: 1px solid red; */
+  background-color: #edf0f2;
 }
 .canvas-editor {
   flex: 0 1 7rem;
-  /* border: 1px solid blue; */
+  border: 1px solid black;
+}
+#colorPicker {
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 1px solid gray;
+  background-color: white;
+  text-align: center;
+  line-height: 1.85rem;
+}
+#colorPicker > input {
+  /* border-radius: 50%; */
+  padding: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: unset;
+  background-color: unset;
 }
 /* 빅데스크탑 */
 @media only screen and (max-width: 1799px) {
@@ -60,54 +78,12 @@
 }
 @media only screen and (max-width: 599px) {
   /* 모바일 세로 */
-  .canvas-container {
-    flex: 0 1 35rem;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-  }
-  .canvas-container > div {
-    border: 1px solid black;
-  }
-  .canvas-menu {
-    flex: 0 1 2rem;
-    display: flex;
-    justify-content: space-between;
-    font-family: "Gulimn";
-    font-size: 1.2rem;
-  }
-  .canvas-menu-L {
-    display: flex;
-  }
-  .canvas-menu-L > div {
-    margin: 0 0.3rem;
-    cursor: pointer;
-  }
-  .canvas-menu-L > div:hover {
-    text-shadow: 1px 1px 1px black;
-  }
-  .canvas-menu-R {
-    display: flex;
-  }
-  .canvas-menu-R > div {
-    margin: 0 0.3rem;
-    cursor: pointer;
-  }
-  .canvas-menu-R > div:hover {
-    text-shadow: 1px 1px 1px black;
-  }
-  .canvas-box {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .canvas-page {
-    flex: 1 1 0;
-    /* border: 1px solid red; */
-  }
+
   .canvas-editor {
     flex: 0 1 5rem;
-    /* border: 1px solid blue; */
+  }
+  .canvas-page {
+    flex: 0 1 24.9rem;
   }
 }
 

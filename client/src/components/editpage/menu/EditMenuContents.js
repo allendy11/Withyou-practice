@@ -3,6 +3,7 @@ import MenuTemplates from "./MenuTemplates";
 import MenuElements from "./MenuElements";
 import MenuImage from "./MenuImage";
 import MenuText from "./MenuText";
+import "./css/EditMenuContents.css";
 const EditMenuContents = ({ selectMenu }) => {
   return (
     <div className="editMenu-contents">
