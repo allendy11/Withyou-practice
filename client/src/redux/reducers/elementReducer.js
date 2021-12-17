@@ -21,20 +21,23 @@ const elementReducer = (state = initialState, action) => {
         elements: [...state.elements, action.payload],
       };
     case PUT_ELEMENT:
-      currentCanvas = state.canvas.filter(
-        (el) => el === action.payload.canvasId
-      );
-      currentCanvas = {
-        ...currentCanvas,
-        elements: [...currentCanvas.elements, action.payload.element],
-      };
+      var { canvasId, element } = action.payload;
+      // currentCanvas = state.canvas.filter(
+      //   (el) => el === action.payload.canvasId
+      // );
+      // currentCanvas = {
+      //   ...currentCanvas,
+      //   elements: [...currentCanvas.elements, action.payload.element],
+      // };
       return {
         ...state,
-        canvas: [
-          ...state.canvas.slice(0, action.payload.canvasId),
-          currentCanvas,
-          ...state.canvas.slice(action.payload.canvasId + 1),
-        ],
+        elements: [...state.elements, { canvasId, ...element }],
+        // ...state,
+        // canvas: [
+        //   ...state.canvas.slice(0, action.payload.canvasId),
+        //   currentCanvas,
+        //   ...state.canvas.slice(action.payload.canvasId + 1),
+        // ],
       };
     case UPDATE_ELEMENT:
       currentCanvas = state.canvas.filter(

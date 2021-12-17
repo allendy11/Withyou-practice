@@ -1,16 +1,9 @@
 export const initialState = {
   // templates: [],
-  elements: [
-    {
-      id: 0,
-      url: "",
-    },
-  ],
+  elements: [],
   canvas: [],
   currentCanvas: {},
-  currentElement: {
-    id: 0,
-  },
+  currentElement: {},
   // initialStyle: {},
   adminTemplates: [],
   adminElements: [

@@ -4,6 +4,7 @@ import MenuElements from "./MenuElements";
 import MenuImage from "./MenuImage";
 import MenuText from "./MenuText";
 import "./css/EditMenuContents.css";
+import { useSelector, useDispatch } from "react-redux";
 const EditMenuContents = ({ selectMenu }) => {
   return (
     <div className="editMenu-contents">

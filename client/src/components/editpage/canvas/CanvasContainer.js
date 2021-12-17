@@ -17,31 +17,25 @@ const CanvasContainer = () => {
   const canvasState = useSelector((state) => state.canvasReducer);
   const elementState = useSelector((state) => state.elementReducer);
   const { canvas, currentCanvas } = canvasState;
+  const { elements, currentElement } = elementState;
+  const [canvasWidth, setCanvasWidth] = useState();
   useEffect(() => {
     if (canvasPageRef.current) {
-      const currentCanvasId = currentCanvas.id ? currentCanvas.id : 0;
       const canvasWidth = canvasPageRef.current.clientWidth;
+      setCanvasWidth((canvasWidth > 950 ? 950 : canvasWidth) * 0.8);
+      const currentCanvasId = currentCanvas.id ? currentCanvas.id : 0;
       dispatch(
         setInitialCanvas(currentCanvasId, {
-          width: (canvasWidth > 950 ? 950 : canvasWidth) * 0.8,
-          height: ((canvasWidth > 950 ? 950 : canvasWidth) * 0.8 * 2) / 3,
           backgroundColor: "#FFFFFF",
         })
       );
     }
   }, []);
   window.onresize = (e) => {
-    if (canvasPageRef.current) {
-      const currentCanvasId = currentCanvas.id ? currentCanvas.id : 0;
-      const canvasWidth = canvasPageRef.current.clientWidth;
-      dispatch(
-        setStyleCanvas(currentCanvasId, {
-          width: (canvasWidth > 950 ? 950 : canvasWidth) * 0.8,
-          height: ((canvasWidth > 950 ? 950 : canvasWidth) * 0.8 * 2) / 3,
-        })
-      );
-    }
+    const canvasWidth = canvasPageRef.current.clientWidth;
+    setCanvasWidth((canvasWidth > 950 ? 950 : canvasWidth) * 0.8);
   };
+
   const handleChange = (e) => {
     dispatch(
       setStyleCanvas(currentCanvas.id, {
@@ -51,12 +45,8 @@ const CanvasContainer = () => {
   };
   const handleClick = (e) => {
     if (e.target.id === "new") {
-      const canvasWidth = canvasPageRef.current.clientWidth;
-
       dispatch(
         addCanvas(currentCanvas.id + 1, {
-          width: (canvasWidth > 950 ? 950 : canvasWidth) * 0.8,
-          height: ((canvasWidth > 950 ? 950 : canvasWidth) * 0.8 * 2) / 3,
           backgroundColor: "#FFFFFF",
         })
       );
@@ -65,15 +55,11 @@ const CanvasContainer = () => {
       dispatch(copyCanvas(currentCanvas.id));
     }
     if (e.target.id === "delete") {
-      console.log(currentCanvas.id);
       dispatch(removeCanvas(currentCanvas.id));
       if (canvas.length === 1) {
         const currentCanvasId = currentCanvas.id ? currentCanvas.id : 0;
-        const canvasWidth = canvasPageRef.current.clientWidth;
         dispatch(
           setInitialCanvas(currentCanvasId, {
-            width: (canvasWidth > 950 ? 950 : canvasWidth) * 0.8,
-            height: ((canvasWidth > 950 ? 950 : canvasWidth) * 0.8 * 2) / 3,
             backgroundColor: "#FFFFFF",
           })
         );
@@ -88,7 +74,6 @@ const CanvasContainer = () => {
   };
   return (
     <div className="canvas-container">
-      {console.log(canvas, currentCanvas)}
       <div className="canvas-menu">
         <div className="canvas-menu-L">
           <div id="colorPicker">
@@ -158,7 +143,10 @@ const CanvasContainer = () => {
       <div className="canvas-box">
         <div className="canvas-page" ref={canvasPageRef}>
           {canvas[currentCanvas.id] && (
-            <Canvas canvas={canvas[currentCanvas.id]} />
+            <Canvas
+              canvas={canvas[currentCanvas.id]}
+              canvasWidth={canvasWidth}
+            />
           )}
         </div>
         <div className="canvas-editor">
