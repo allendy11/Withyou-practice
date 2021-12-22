@@ -10,7 +10,7 @@
 }
 @media only screen and (max-width: 599px) {
   /* 모바일 세로 */
-  .login-container {
+  .signup-container {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -18,11 +18,12 @@
     display: flex;
     flex-direction: column;
   }
-  .login-box {
+  .signup-box {
     flex: 1 1 0;
     /* border: 1px solid black; */
+    font-family: "Gulimn";
   }
-  .login-box:first-child {
+  .signup-box:first-child {
     flex: 0 1 15rem;
     display: flex;
     justify-content: center;
@@ -30,24 +31,22 @@
     font-size: 6rem;
     font-family: "Huglife";
   }
-  .login-mid {
-    flex: 0 1 20rem;
+  .signup-mid {
+    flex: 0 1 22rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    font-family: "Gulimn";
   }
-  .login-mid > div {
-    /* border: 1px solid black; */
+  .signup-mid > div {
+    /* border: 1px solid red; */
   }
-  .login-midTop {
-    flex: 0 1 2rem;
-  }
-  .login-midTop > div {
+  .signup-midTop {
+    flex: 0 1 3rem;
     font-size: 1.5rem;
-    margin-left: 2rem;
   }
-  .login-midMid {
+  .signup-midTop > div {
+    margin-left: 3rem;
+  }
+  .signup-midBot {
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
@@ -55,47 +54,48 @@
     padding: 1rem 0;
     align-items: center;
   }
-  .login-input {
+  .signup-input {
     position: relative;
     width: 80%;
+    /* border: 1px solid blue */
   }
-  .login-input > input {
+  .signup-input > input {
     width: 100%;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     border: none;
     border-bottom: 1px solid black;
-    padding-bottom: 0.3rem;
   }
-  .login-input > input::placeholder {
+  .signup-input > input::placeholder {
     color: transparent;
   }
-  .login-input > input:placeholder-shown + label {
-    font-size: 1.5rem;
-    top: 0;
-    left: 0;
-  }
-  .login-input > input:focus + label,
-  .login-input > label {
-    position: absolute;
-    top: -1rem;
-    left: 0.1rem;
-    font-size: 0.8rem;
-    pointer-events: none;
-    transition: all 0.3s ease;
-  }
-  .login-input > input:focus,
-  .login-input > input:not(:placeholder-shown) {
+  .signup-input > input:focus,
+  .signup-input > input:not(:placeholder-shown) {
     outline: none;
     border-bottom: 1px solid rgb(45, 214, 45);
   }
-  .login-midBot {
-    flex: 0 1 7rem;
+
+  .signup-input > input:placeholder-shown + label {
+    font-size: 1.5rem;
+    top: 0.2rem;
+    left: 0.2rem;
+  }
+  .signup-input > input:focus + label,
+  .signup-input > label {
+    position: absolute;
+    top: -1rem;
+    left: 0.2rem;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  .signup-bot {
+    flex: 0 1 8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
-  .login-errMessage {
+  .signup-errMessage {
     flex: 0 1 2rem;
     /* border: 1px solid black; */
     width: 70%;
@@ -103,7 +103,7 @@
     color: red;
     text-align: center;
   }
-  #login-btn {
+  #signup-btn {
     text-align: center;
     border: 1px solid black;
     width: 15rem;
@@ -113,37 +113,24 @@
     cursor: pointer;
     margin-bottom: 2rem;
   }
-  #login-btn:hover {
+  #signup-btn:hover {
     background-color: black;
     color: white;
   }
-  .login-midBot > div:last-child {
-    text-align: right;
+  .signup-botBot {
+    /* border: 1px solid black; */
     width: 100%;
+    text-align: right;
   }
-  .login-midBot span {
-    margin-right: 0.5rem;
+  .signup-botBot > span {
+    margin: 0 0.5rem;
   }
-  .login-midBot span:last-child {
+  .signup-botBot > span:last-child {
     border-bottom: 1px solid black;
     cursor: pointer;
   }
-  .login-midBot span:last-child:hover {
+  .signup-botBot > span:last-child:hover {
     text-shadow: 1px 1px 1px black;
-  }
-  #close-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    text-align: center;
-    font-size: 1.5rem;
-    border: 1px solid black;
-    border-radius: 50%;
-    background-color: rgb(212, 212, 212);
-    cursor: pointer;
   }
 }
 

@@ -1,3 +1,5 @@
+export const SET_INITIAL_CANVAS = "SET_INITIAL_CANVAS"; // 초기 캔버스 스타일 세팅
+export const SET_STYLE_CANVAS = "SET_STYLE_CANVAS"; // 캔버스 스타일 변경
 export const ADD_CANVAS = "ADD_CANVAS"; // 빈 캔버스 추가
 export const COPY_CANVAS = "COPY_CANVAS"; // 현재 캔버스 복사
 export const REMOVE_CANVAS = "REMOVE_CANVAS"; // 현재 캔버스 삭제
@@ -11,7 +13,10 @@ export const SET_ELEMENTS = "SET_ELEMENTS"; // 서버에 있는 엘리먼트 불
 export const ADD_ELEMENT = "ADD_ELEMENT"; // 관리자 권한으로 엘리먼트 추가하기
 export const PUT_ELEMENT = "PUT_ELEMENT"; // 유저가 원하는 엘리먼트 캔버스에 추가
 export const UPDATE_ELEMENT = "UPDATE_ELEMENT"; // 유저가 엘리먼트 스타일 변경
+export const CHOOSE_ELEMENT = "CHOOSE_ELEMENT"; // 엘리먼트를 클릭
 
+export const ADMIN_ADD_TEMPLATE = "ADMIN_ADD_TEMPLATE"; // 관리자 권한으로 템플릿 추가
+export const ADMIN_ADD_ELEMENT = "ADMIN_ADD_ELEMENT"; // 관리자 권한으로 엘리먼트 추가
 export const NOTIFY = "NOTIFY";
 
 export const fetchData = (api, action) => (dispatch) => {
@@ -22,30 +27,46 @@ export const fetchData = (api, action) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
-export const addCanvas = (canvasId) => {
+export const setInitialCanvas = (id, style) => {
+  return {
+    type: SET_INITIAL_CANVAS,
+    payload: {
+      id,
+      style,
+    },
+  };
+};
+export const setStyleCanvas = (id, style) => {
+  return {
+    type: SET_STYLE_CANVAS,
+    payload: {
+      id,
+      style,
+    },
+  };
+};
+export const addCanvas = (id, style) => {
   return {
     type: ADD_CANVAS,
     payload: {
-      id: canvasId,
-      style: {},
-      elements: [],
+      id,
+      style,
     },
   };
 };
-export const copyCanvas = (canvasId, canvas) => {
+export const copyCanvas = (id) => {
   return {
     type: COPY_CANVAS,
     payload: {
-      ...canvas,
-      id: canvasId,
+      id,
     },
   };
 };
-export const removeCanvas = (canvasId) => {
+export const removeCanvas = (id) => {
   return {
     type: REMOVE_CANVAS,
     payload: {
-      id: canvasId,
+      id,
     },
   };
 };
@@ -106,6 +127,33 @@ export const updateElement = (canvasId, elementId, style) => {
       canvasId,
       elementId,
       style,
+    },
+  };
+};
+export const chooseElement = (canvasId, elementId) => {
+  return {
+    type: CHOOSE_ELEMENT,
+    payload: {
+      canvasId,
+      elementId,
+    },
+  };
+};
+export const adminAddTemplate = (templateId, card) => {
+  return {
+    type: ADMIN_ADD_TEMPLATE,
+    payload: {
+      templateId,
+      card,
+    },
+  };
+};
+export const adminAddElement = (elementId, src) => {
+  return {
+    type: ADMIN_ADD_ELEMENT,
+    payload: {
+      elementId,
+      src,
     },
   };
 };
