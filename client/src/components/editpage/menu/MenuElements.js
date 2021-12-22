@@ -13,10 +13,18 @@ const MenuElements = () => {
   const imgRef = useRef([]);
   const handleClick = (e) => {
     const imgId = e.target.id.slice(3);
+    const elementsOnCanvas = elements.filter(
+      (el) => el.canvasId === currentCanvas.id
+    );
     dispatch(
       putElement(currentCanvas.id, {
+        id: elementsOnCanvas.length,
         type: "image",
         src: imgRef.current[imgId].src,
+        onSelect: false,
+        style: {
+          width: "150",
+        },
       })
     );
   };

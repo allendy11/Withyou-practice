@@ -21,8 +21,8 @@ const CanvasContainer = () => {
   const [canvasWidth, setCanvasWidth] = useState();
   useEffect(() => {
     if (canvasPageRef.current) {
-      const canvasWidth = canvasPageRef.current.clientWidth;
-      setCanvasWidth((canvasWidth > 950 ? 950 : canvasWidth) * 0.8);
+      const canvasPageWidth = canvasPageRef.current.clientWidth;
+      setCanvasWidth((canvasPageWidth >= 950 ? 950 : canvasPageWidth) * 0.8);
       const currentCanvasId = currentCanvas.id ? currentCanvas.id : 0;
       dispatch(
         setInitialCanvas(currentCanvasId, {
@@ -33,7 +33,7 @@ const CanvasContainer = () => {
   }, []);
   window.onresize = (e) => {
     const canvasWidth = canvasPageRef.current.clientWidth;
-    setCanvasWidth((canvasWidth > 950 ? 950 : canvasWidth) * 0.8);
+    setCanvasWidth((canvasWidth >= 950 ? 950 : canvasWidth) * 0.8);
   };
 
   const handleChange = (e) => {

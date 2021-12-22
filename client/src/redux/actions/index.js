@@ -13,6 +13,7 @@ export const SET_ELEMENTS = "SET_ELEMENTS"; // 서버에 있는 엘리먼트 불
 export const ADD_ELEMENT = "ADD_ELEMENT"; // 관리자 권한으로 엘리먼트 추가하기
 export const PUT_ELEMENT = "PUT_ELEMENT"; // 유저가 원하는 엘리먼트 캔버스에 추가
 export const UPDATE_ELEMENT = "UPDATE_ELEMENT"; // 유저가 엘리먼트 스타일 변경
+export const CHOOSE_ELEMENT = "CHOOSE_ELEMENT"; // 엘리먼트를 클릭
 
 export const ADMIN_ADD_TEMPLATE = "ADMIN_ADD_TEMPLATE"; // 관리자 권한으로 템플릿 추가
 export const ADMIN_ADD_ELEMENT = "ADMIN_ADD_ELEMENT"; // 관리자 권한으로 엘리먼트 추가
@@ -126,6 +127,15 @@ export const updateElement = (canvasId, elementId, style) => {
       canvasId,
       elementId,
       style,
+    },
+  };
+};
+export const chooseElement = (canvasId, elementId) => {
+  return {
+    type: CHOOSE_ELEMENT,
+    payload: {
+      canvasId,
+      elementId,
     },
   };
 };
