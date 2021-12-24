@@ -22,6 +22,7 @@ const MenuElements = () => {
         type: "image",
         src: imgRef.current[imgId].src,
         onSelect: false,
+        onMove: false,
         style: {
           width: "150",
         },

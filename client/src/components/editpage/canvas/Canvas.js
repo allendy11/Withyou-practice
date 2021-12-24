@@ -1,23 +1,34 @@
 import React, { useState, useRef } from "react";
 import "./css/Canvas.css";
 import { useSelector, useDispatch } from "react-redux";
-import { updateElement, chooseElement } from "redux/actions";
+import {
+  updateElement,
+  selectOnElement,
+  selectOffElement,
+  moveOnElement,
+  moveOffElement,
+} from "redux/actions";
 const Canvas = ({ canvas, canvasWidth }) => {
   const imageRef = useRef([]);
+  const canvasRef = useRef();
   const dispatch = useDispatch();
   const elementState = useSelector((state) => state.elementReducer);
   const { elements, currentElement } = elementState;
   const [initPos, setInitPos] = useState({ x: "", y: "" });
+  const [elementPos, setElementPos] = useState({ top: "", left: "" });
   const handleClick = (e) => {
     imageRef.current.map((el) => (el.style.border = "unset"));
     imageRef.current[e.target.id].style.border = "1px solid blue";
-    // console.log(e.nativeEvent.clientX, e.nativeEvent.clientY);
-    // console.log(e.nativeEvent.offsetY, e.nativeEvent.offsetY);
-    // console.log(imageRef.current[e.target.id].getBoundingClientRect());
-    // imageRef.current[e.target.id].style.top += "+10px";
   };
   const onMouseDown = (e) => {
-    dispatch(chooseElement(canvas.id, Number(e.target.id)));
+    // dispatch(updateElement(canvas.id, Number(e.target.id), {
+    //   top:canvasRef.current.offsetHeight / 2 -
+    //   imageRef.current[e.target.id].offsetHeight / 2,
+    //   left:canvasRef.current.offsetWidth / 2 -
+    //   imageRef.current[e.target.id].offsetWidth / 2,
+    // }))
+    dispatch(selectOnElement(canvas.id, Number(e.target.id)));
+    dispatch(moveOnElement(canvas.id, Number(e.target.id)));
     setInitPos({ x: e.nativeEvent.clientX, y: e.nativeEvent.clientY });
   };
   const onMouseMove = (e) => {
@@ -25,23 +36,25 @@ const Canvas = ({ canvas, canvasWidth }) => {
       const idx = elements.findIndex((el) => {
         return el.canvasId == canvas.id && el.id == currentElement.id;
       });
-      console.log(currentElement);
-      console.log("a");
-      if (elements[idx].onSelect) {
+      if (elements[idx].onMove) {
+        const left =
+          canvasRef.current.offsetWidth / 2 -
+          imageRef.current[e.target.id].offsetWidth / 2;
+        const top =
+          canvasRef.current.offsetHeight / 2 -
+          imageRef.current[e.target.id].offsetHeight / 2;
         const diff_x = e.nativeEvent.clientX - initPos.x;
         const diff_y = e.nativeEvent.clientY - initPos.y;
-        console.log(diff_y);
-        imageRef.current[e.target.id].style.top = `${diff_y}px`;
-        // imageRef.current[e.target.id].style.left = `${diff_x}px`;
+        imageRef.current[e.target.id].style.top = `${top + diff_y}px`;
+        imageRef.current[e.target.id].style.left = `${left + diff_x}px`;
       }
     }
-    // console.log(idx);
-    // console.log(e.target.id);
-    // console.log(element.getBoundingClientRect());
-    // console.log(diff_x, diff_y);
-    // element.style.top += diff_y;
+    console.log(imageRef.current[e.target.id].getBoundingClientRect());
   };
-  const onMouseUp = (e) => {};
+  const onMouseUp = (e) => {
+    dispatch(moveOffElement(canvas.id));
+    setInitPos({ x: "", y: "" });
+  };
   const onMouseOver = (e) => {
     imageRef.current[e.target.id].style.border = "1px solid blue";
   };
@@ -57,6 +70,7 @@ const Canvas = ({ canvas, canvasWidth }) => {
     <div
       id={canvas.id}
       className="canvas"
+      ref={canvasRef}
       style={{
         backgroundColor: `${canvas.style.backgroundColor}`,
         width: `${canvasWidth}px`,

@@ -3,7 +3,10 @@ import {
   ADD_ELEMENT,
   PUT_ELEMENT,
   UPDATE_ELEMENT,
-  CHOOSE_ELEMENT,
+  SELECT_ON_ELEMENT,
+  SELECT_OFF_ELEMENT,
+  MOVE_ON_ELEMENT,
+  MOVE_OFF_ELEMENT,
 } from "../actions/";
 import { initialState } from "./initialState";
 
@@ -67,13 +70,10 @@ const elementReducer = (state = initialState, action) => {
           ...state.elements.slice(idx + 1),
         ],
       };
-    case CHOOSE_ELEMENT:
+    case SELECT_ON_ELEMENT:
       var { canvasId, elementId } = action.payload;
       var idx = state.elements.findIndex((el) => {
         return el.canvasId === canvasId && el.id === elementId;
-      });
-      state.elements.map((el) => {
-        el.onSelect = false;
       });
       var currentElement = state.elements[idx];
       currentElement = {
@@ -88,6 +88,40 @@ const elementReducer = (state = initialState, action) => {
           ...state.elements.slice(idx + 1),
         ],
         currentElement: { id: `${elementId}` },
+      };
+    case SELECT_OFF_ELEMENT:
+      var { canvasId } = action.payload;
+      state.elements
+        .filter((el) => el.canvasId === canvasId)
+        .map((el) => (el.onSelect = false));
+      return {
+        ...state,
+      };
+    case MOVE_ON_ELEMENT:
+      var { canvasId, elementId } = action.payload;
+      var idx = state.elements.findIndex((el) => {
+        return el.canvasId === canvasId && el.id === elementId;
+      });
+      var currentElement = state.elements[idx];
+      currentElement = {
+        ...currentElement,
+        onMove: true,
+      };
+      return {
+        ...state,
+        elements: [
+          ...state.elements.slice(0, idx),
+          currentElement,
+          ...state.elements.slice(idx + 1),
+        ],
+      };
+    case MOVE_OFF_ELEMENT:
+      var { canvasId } = action.payload;
+      state.elements
+        .filter((el) => el.canvasId === canvasId)
+        .map((el) => (el.onMove = false));
+      return {
+        ...state,
       };
     default:
       return state;
