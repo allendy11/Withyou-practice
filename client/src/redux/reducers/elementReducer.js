@@ -51,17 +51,6 @@ const elementReducer = (state = initialState, action) => {
         ...currentElement,
         style: { ...currentElement.style, ...style },
       };
-      // var elementsOnCanvas = state.elements.filter(
-      //   (el) => el.canvasId === canvasId
-      // );
-      // var [currentElement] = elementsOnCanvas.filter((el) => {
-      //   el.id === element.id;
-      // });
-      // currentElement = {
-      //   ...currentElement,
-      //   style: { ...currentElement.style, ...element.style },
-      // };
-
       return {
         ...state,
         elements: [

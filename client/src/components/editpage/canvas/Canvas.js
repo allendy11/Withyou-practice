@@ -9,63 +9,90 @@ import {
   moveOffElement,
 } from "redux/actions";
 const Canvas = ({ canvas, canvasWidth }) => {
-  const imageRef = useRef([]);
+  const [moveOn, setMoveOn] = useState(false);
+  const [initMousePos, setInitMousePos] = useState({ x: "", y: "" });
+  const [initDiffPos, setInitDiffPos] = useState({ x: "", y: "" });
+  const [initElementPos, setInitElementPos] = useState({ top: "", left: "" });
   const canvasRef = useRef();
+  const imageRef = useRef([]);
   const dispatch = useDispatch();
   const elementState = useSelector((state) => state.elementReducer);
   const { elements, currentElement } = elementState;
-  const [initPos, setInitPos] = useState({ x: "", y: "" });
-  const [elementPos, setElementPos] = useState({ top: "", left: "" });
-  const handleClick = (e) => {
-    imageRef.current.map((el) => (el.style.border = "unset"));
-    imageRef.current[e.target.id].style.border = "1px solid blue";
-  };
   const onMouseDown = (e) => {
-    // dispatch(updateElement(canvas.id, Number(e.target.id), {
-    //   top:canvasRef.current.offsetHeight / 2 -
-    //   imageRef.current[e.target.id].offsetHeight / 2,
-    //   left:canvasRef.current.offsetWidth / 2 -
-    //   imageRef.current[e.target.id].offsetWidth / 2,
-    // }))
-    dispatch(selectOnElement(canvas.id, Number(e.target.id)));
-    dispatch(moveOnElement(canvas.id, Number(e.target.id)));
-    setInitPos({ x: e.nativeEvent.clientX, y: e.nativeEvent.clientY });
+    setMoveOn(true);
+    // type1
+    // setInitDiffPos({
+    //   x:
+    //     e.nativeEvent.clientX -
+    //     imageRef.current[e.target.id].getBoundingClientRect().left,
+    //   y:
+    //     e.nativeEvent.clientY -
+    //     imageRef.current[e.target.id].getBoundingClientRect().top,
+    // });
+
+    //type2
+    setInitMousePos({
+      x: e.nativeEvent.clientX,
+      y: e.nativeEvent.clientY,
+    });
+    const [element] = elements.filter((el) => {
+      return el.canvasId == canvas.id && el.id == e.target.id;
+    });
+    if (element.style.top && element.style.left) {
+      const { top, left } = element.style;
+      console.log(top, left);
+      setInitElementPos({
+        top,
+        left,
+      });
+    } else {
+      setInitElementPos({
+        top:
+          canvasRef.current.offsetHeight / 2 -
+          imageRef.current[e.target.id].offsetHeight / 2,
+        left:
+          canvasRef.current.offsetWidth / 2 -
+          imageRef.current[e.target.id].offsetWidth / 2,
+      });
+    }
   };
   const onMouseMove = (e) => {
-    if (currentElement.id) {
-      const idx = elements.findIndex((el) => {
-        return el.canvasId == canvas.id && el.id == currentElement.id;
-      });
-      if (elements[idx].onMove) {
-        const left =
-          canvasRef.current.offsetWidth / 2 -
-          imageRef.current[e.target.id].offsetWidth / 2;
-        const top =
-          canvasRef.current.offsetHeight / 2 -
-          imageRef.current[e.target.id].offsetHeight / 2;
-        const diff_x = e.nativeEvent.clientX - initPos.x;
-        const diff_y = e.nativeEvent.clientY - initPos.y;
-        imageRef.current[e.target.id].style.top = `${top + diff_y}px`;
-        imageRef.current[e.target.id].style.left = `${left + diff_x}px`;
-      }
+    if (moveOn) {
+      // type1 마우스 최종 위치에 따라 엘리먼트 위치변경 (엘리먼트 안에서의 마우스 위치 저장)
+      // const top =
+      //   e.nativeEvent.clientY -
+      //   initDiffPos.y -
+      //   canvasRef.current.getBoundingClientRect().top;
+      // const left =
+      //   e.nativeEvent.clientX -
+      //   initDiffPos.x -
+      //   canvasRef.current.getBoundingClientRect().left;
+      // imageRef.current[e.target.id].style.top = `${top}px`;
+      // imageRef.current[e.target.id].style.left = `${left}px`;
+
+      // type2: 마우스 처음 위치와 나중위치의 차이만큼 엘리먼트 위치변경 (마우스 이동량 저장)
+      const diff_x = e.nativeEvent.clientX - initMousePos.x;
+      const diff_y = e.nativeEvent.clientY - initMousePos.y;
+      const top = initElementPos.top + diff_y;
+      const left = initElementPos.left + diff_x;
+      imageRef.current[e.target.id].style.top = `${top}px`;
+      imageRef.current[e.target.id].style.left = `${left}px`;
+      dispatch(
+        updateElement(canvas.id, Number(e.target.id), {
+          top,
+          left,
+        })
+      );
     }
-    console.log(imageRef.current[e.target.id].getBoundingClientRect());
   };
   const onMouseUp = (e) => {
-    dispatch(moveOffElement(canvas.id));
-    setInitPos({ x: "", y: "" });
+    setMoveOn(false);
   };
-  const onMouseOver = (e) => {
-    imageRef.current[e.target.id].style.border = "1px solid blue";
-  };
+  const onMouseOver = (e) => {};
   const onMouseOut = (e) => {
-    const [element] = elements.filter((el) => {
-      return el.id == e.target.id;
-    });
-    if (!element.onSelect) {
-      imageRef.current[e.target.id].style.border = "unset";
-    }
+    // setMoveOn(false);
   };
+  const handleClick = (e) => {};
   return (
     <div
       id={canvas.id}
@@ -88,15 +115,12 @@ const Canvas = ({ canvas, canvasWidth }) => {
                   src={ele.src}
                   alt={ele.type}
                   draggable={false}
-                  ref={(elem) => (imageRef.current[ele.id] = elem)}
+                  ref={(el) => (imageRef.current[ele.id] = el)}
                   style={{
                     ...ele.style,
                     position: "absolute",
                     boxSizing: "border-box",
                     width: `${(canvasWidth / 760) * ele.style.width}px`,
-                    // top: "50%",
-                    // left: "50%",
-                    // transform: "translate(-50%,-50%)",
                   }}
                   onMouseDown={onMouseDown}
                   onMouseMove={onMouseMove}
