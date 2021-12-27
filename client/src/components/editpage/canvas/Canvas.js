@@ -48,11 +48,17 @@ const Canvas = ({ canvas, canvasWidth }) => {
     } else {
       setInitElementPos({
         top:
-          canvasRef.current.offsetHeight / 2 -
-          imageRef.current[e.target.id].offsetHeight / 2,
+          imageRef.current[e.target.id].getBoundingClientRect().top -
+          canvasRef.current.getBoundingClientRect().top,
         left:
-          canvasRef.current.offsetWidth / 2 -
-          imageRef.current[e.target.id].offsetWidth / 2,
+          imageRef.current[e.target.id].getBoundingClientRect().left -
+          canvasRef.current.getBoundingClientRect().left,
+        // top:
+        //   canvasRef.current.offsetHeight / 2 -
+        //   imageRef.current[e.target.id].offsetHeight / 2,
+        // left:
+        //   canvasRef.current.offsetWidth / 2 -
+        //   imageRef.current[e.target.id].offsetWidth / 2,
       });
     }
   };
